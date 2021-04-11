@@ -23,3 +23,6 @@ I love deadlines. I like the whooshing sound they make as they fly by.
 Measuring programming progress by lines of code is like measuring aircraft building progress by weight.
 The problem with troubleshooting is that trouble shoots back.
 Walking on water and developing software from a specification are easy if both are frozen.
+Computers are fast; programmers keep it slow.
+Programming can be fun, and so can cryptography; however, they should not be combined.
+Software and cathedrals are much the same — first we build them, then we pray.

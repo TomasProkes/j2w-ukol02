@@ -5,9 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -39,27 +36,14 @@ public class QuoteController {
             "I love deadlines. I like the whooshing sound they make as they fly by.",
             "Measuring programming progress by lines of code is like measuring aircraft building progress by weight.",
             "The problem with troubleshooting is that trouble shoots back.",
-            "Walking on water and developing software from a specification are easy if both are frozen.");
-    private static final List<String> images = Arrays.asList("https://source.unsplash.com/RFHFV7lVQBY/1600x900",
-            "https://unsplash.com/photos/JRhVvF5VHG4",
-            "https://unsplash.com/photos/onpxyxjwKm0",
-            "https://unsplash.com/photos/lRwGMe1MFj4",
-            "https://unsplash.com/photos/dEzd6GpIEys",
-            "https://unsplash.com/photos/_8zfgT9kS2g",
-            "https://unsplash.com/photos/6WuPn9JfHjI",
-            "https://unsplash.com/photos/N0wr6vRpwCQ",
-            "https://unsplash.com/photos/hRwDbwef88w",
-            "https://unsplash.com/photos/cGMFif58sUc",
-            "https://unsplash.com/photos/5VFSdzaq69c",
-            "https://unsplash.com/photos/Bcj6vbINzuM",
-            "https://unsplash.com/photos/Dd2OENYz8H0",
-            "https://unsplash.com/photos/IKU9YqfDFc4"
-            );
+            "Walking on water and developing software from a specification are easy if both are frozen.",
+            "Computers are fast; programmers keep it slow.",
+            "Programming can be fun, and so can cryptography; however, they should not be combined.",
+            "Software and cathedrals are much the same — first we build them, then we pray.");
 
     private final String filePath = "citaty.txt";
     private final Random random;
     private final int quoteCount;
-    private final int imageCount;
 
     public QuoteController() {
         random = new Random();
@@ -71,7 +55,6 @@ public class QuoteController {
 //            e.printStackTrace();
 //        }
         quoteCount = quotes.size();
-        imageCount = images.size();
     }
 
     @GetMapping("/")
@@ -82,12 +65,12 @@ public class QuoteController {
         // FIXME when the filepath issue is resolved
 //        String quote = Files.readAllLines(Paths.get(filePath)).get(randNum);
         String quote = quotes.get(randNum);
-        // FIXME when the image loading issue is resolved
-//        String image = images.get(randNum % imageCount);
-        String image = "https://source.unsplash.com/user/tomastuma/600x400";
+
+        String image = "https://source.unsplash.com/user/tomastuma/400x300";
+        String bodyStyle = "background-image: url(" + image + ");";
 
         result.addObject("quote", quote);
-        result.addObject("image", image);
+        result.addObject("bodyStyle", bodyStyle);
         return result;
     }
 }

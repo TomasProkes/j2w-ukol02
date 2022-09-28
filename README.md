@@ -60,10 +60,10 @@ private static List<String> readAllLines(String resource)throws IOException{
 
 ### Vytvoření seznamu textových řetězců přímo ve zdrojovém kódu Javy
 
-Pokud chci vytvořit seznam několika textových řetězců a nechci je mít v externím souboru, můžu použít metodu `Arrays.asList()`:
+Pokud chci vytvořit seznam několika textových řetězců a nechci je mít v externím souboru, můžu použít metodu `List.of()`:
 
 ```java
-List<String> seznamTextu=Arrays.asList("řetězec 1","řetězec 2","další řetězec","ještě jiný řetězec");
+List<String> seznamTextu=List.of("řetězec 1","řetězec 2","další řetězec","ještě jiný řetězec");
 ```
 
 ### Obrázek na pozadí v inline stylu
@@ -76,18 +76,21 @@ Kaskádové styly (CSS) je možné psát i ve formě *inline stylů* – přísl
 <div style="background-color: red">Tento text má červenou barvu pozadí.</div>
 ```
 
-### Vložení HTML místo obyčejného textu přes Thymeleaf
+### Vložení HTML místo obyčejného textu přes Freemarker
 
-Když v Thymeleaf použiješ atribut `th:text`, vloží se obsah atributu do stránky jako obyčejný text. Tzn. pokud bude obsahovat nějaké HTML značky, zobrazí se
-tyto značky na stránce textově, např. `<div>`. Pokud chceš vložit text jako HTML, je potřeba použít `th:utext` (jako *unescaped text*). **Pozor, takto vložený
-kód se nijak nekontroluje. Je tedy potřeba takto vkládat pouze HTML kód, kterému důvěřuješ. V žádném případě takto nelze vkládat kód, který pochází od
-uživatele. Uživatel by totiž mohl do kódu podstrčit třeba značku `<script>` a spustit v prohlížeči jakýkoli svůj kód.**
+Když se ve Freemarkeru použije interpolace `${text}`, vloží se obsah proměnné `text` do stránky tak, aby bylo v prrohlížeči zobrazeno přesně, to, co je v textu.
+Tzn. pokud bude obsahovat nějaké HTML značky, zobrazí se tyto značky na stránce textově, např. `<div>`.
+Pokud chceš vložit text jako HTML, je potřeba použít `${text?no_esc}` (tzn. nemá se provádět escapování, tj. nahrazování znaků se speciálním významem).
+**Pozor, takto vložený kód se nijak nekontroluje.
+Je tedy potřeba takto vkládat pouze HTML kód, kterému důvěřuješ.
+V žádném případě takto nelze vkládat kód, který pochází od uživatele.
+Uživatel by totiž mohl do kódu podstrčit třeba značku `<script>` a spustit v prohlížeči jakýkoli svůj kód.**
 
 ### Odkazy
 
-* odkaz na stránku [Lekce 2](https://java.czechitas.cz/2021-jaro/java-2/lekce-2.html)
-* Java SE 11 [Javadoc](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/) – dokumentace všech tříd, které jsou součástí základní Javy ve verzi 11.
+* odkaz na stránku [Lekce 2](https://java.czechitas.cz/2022-podzim/java-2-online/lekce-2.html)
+* Java SE 17 [Javadoc](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/) – dokumentace všech tříd, které jsou součástí základní Javy ve verzi 11.
 * Dokumentace [Spring Boot](https://spring.io/projects/spring-boot#learn) – odsud je anotace `@SpringBootApplication` a třída `SpringApplication`.
 * Dokumentace [Spring Framework](https://spring.io/projects/spring-framework#learn) – odsud jsou anotace `@Controller`, `@GetRequest` a třída `ModelAndView`.
-* Dokumentace [Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html) – šablonovací systém pro HTML použitý v projektu.
+* Dokumentace [Freemarker](https://freemarker.apache.org/docs/index.html) – šablonovací systém pro HTML použitý v projektu.
 * [Unsplash](https://unsplash.com) – obrázky a fotografie k použití zdarma
